@@ -34,7 +34,7 @@ using namespace std;
 
 
 */
-void print_2D_v(vector<int>& V)
+void print_1D_v(vector<int>& V)
 {
     for(auto d:V)
     {
@@ -78,6 +78,6 @@ int main()
     vector<int> Arr = { 13 , 46 , 24 , 52 , 20 , 9 };
     SelectionSort(Arr);
     cout << "After SelectionSort" << endl;
-    print_2D_v(Arr);
+    print_1D_v(Arr);
     return 0;
 }
