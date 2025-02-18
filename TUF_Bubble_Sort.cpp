@@ -143,6 +143,9 @@ void print_1D_v(vector<int>& V)
     cout << endl;
 }
 
+// TC --> O(N^2)
+// Algo runs for n + (n-1) + (n-2) + (n-3) .... 2 = n.(n+1)/2 = n^2/2 + n/2 ==> n^2
+
 void BubbleSort(vector<int>& Arr)
 {
     int n = Arr.size();
@@ -159,11 +162,39 @@ void BubbleSort(vector<int>& Arr)
     }
 }
 
+// If Array is Already Sorted, then Loop will break in n times
+// TC --> O(N)
+void BubbleSort_Optimized(vector<int>& Arr)
+{
+    int n = Arr.size();
+
+    for(int i=0;i<n;i++)
+    {
+        bool didSwap = false;
+        for(int j=0;j<n-1-i;j++)
+        {
+            if(Arr[j]>Arr[j+1])
+            {
+                swap(Arr[j],Arr[j+1]);
+                didSwap = true;
+            }
+        }
+        if(didSwap==false) // If no Swaps done, this means Array is Sorted
+            break;
+        cout << "runs" << endl;
+    }
+}
+
 int main()
 {
     vector<int> Arr = {13,  46,  24,  52,  20,  9};
     BubbleSort(Arr);
     cout << "Sorted Array -- >" << endl;
     print_1D_v(Arr);
+
+    vector<int> Arr2 = {1,2,3,4,5,6};
+    BubbleSort_Optimized(Arr2);
+    cout << "Sorted Array -- >" << endl;
+    print_1D_v(Arr2);
     return 0;
 }
